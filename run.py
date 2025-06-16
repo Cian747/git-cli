@@ -4,14 +4,16 @@ import urllib.request,json
 git_url = 'https://api.github.com/users/{}/events'
 
 
-def get_user_activity(user):
+def get_user_activity():
     '''
     This function will control the date it gets from the api
     '''
 
-    print("Hello there! Welcome oto your own Github CLI")
+    print("Hello there! Welcome to your own Github CLI")
+    print('Put in your github username below:')
+    gu_name = input()
 
-    get_user_data = git_url.format(user)
+    get_user_data = git_url.format(gu_name)
 
     with urllib.request.urlopen(get_user_data) as url:
         user_data = url.read()
@@ -20,9 +22,9 @@ def get_user_activity(user):
         results = []
 
         for item in get_user_response:
-            print(id = item.get('id'))
-            print(repo = item.get('repo'))
-            print(created_at = item.get('created_at'))
+            print(item.get('id'))
+            print(item.get('repo'))
+            print(item.get('created_at'))
 
 
 
